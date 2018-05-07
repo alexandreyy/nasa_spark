@@ -1,32 +1,47 @@
-1. Qual​ ​ o ​ objetivo​ ​ do​ ​ comando​ ​ cache​ ​ em​ ​ Spark?
+1. Qual o objetivo do comando cache em Spark?
+Configura o Spark para armazenar resultados de operações em cache a fim de
+evitar que necessitem ser executadas novamente, reduzindo o tempo de execução.
 
-2. O​ ​ mesmo​ ​ código​ ​ implementado​ ​ em​ ​ Spark​ ​ é ​ ​ normalmente​ ​ mais​ ​ rápido​ ​ que​ ​ a ​ ​ implementação​ ​ equivalente​ ​ em
-MapReduce.​ ​ Por​ ​ quê?
+2. O mesmo código implementado em Spark é normalmente mais rápido que a
+implementação equivalente em MapReduce. Por quê?
+O Spark utiliza operações "preguiçosas" e de cache, possibilitando a otimização
+do plano de execução. O Spark também realiza computação em memória evitando
+ciclos de leitura e escrita no disco. Como o MapReduce precisa persistir os
+dados no disco através de ciclos de leitura e escrita, ele é mais devagar que o
+Spark.
 
-3. Qual​ ​ é ​ ​ a ​ ​ função​ ​ do​ ​ SparkContext​?
+3. Qual  é   a   função  do  SparkContext?
+Realiza a conexão entre a aplicação e o cluster, fornecendo o acesso a recursos
+e funcionalidades do Spark.
 
-4. Explique​ ​ com​ ​ suas​ ​ palavras​ ​ ​ o ​ ​ que​ ​ é ​ ​ Resilient​ ​ Distributed​ ​ Datasets​​ ​ (RDD).
+4. Explique com suas palavras o que é Resilient Distributed Datasets (RDD).
+É uma representação de dados utilizada para manipulação de dados distribuídos
+em paralelo, sendo tolerante a falhas.
 
-5. GroupByKey​ ​ é ​ ​ menos​ ​ eficiente​ ​ que​ ​ reduceByKey​ ​ em​ ​ grandes​ ​ dataset.​ ​ Por​ ​ quê?
+5.  GroupByKey é menos eficiente que reduceByKey em grandes dataset. Por quê?
+Sim. O reduceByKey faz a combinação de saídas de cada chave antes do processo
+de shuffling, evitando a transferência de dados desnecessários na rede. O
+groupByKey faz o shuffling em todos os dados, tornando o mais lento.
 
-6. Explique​ ​ o ​ ​ que​ ​ o ​ ​ código​ ​ Scala​ ​ abaixo​ ​ faz.
+6. Explique  o   que  o   código  Scala  abaixo  faz.
+Realiza a contagem de palavras iguais de um arquivo e salva o resultado.
 
 =====================================================================
-HTTP​ ​ requests​ ​ to​ ​ the​ ​ NASA​ ​ Kennedy​ ​ Space​ ​ Center​ ​ WWW​ ​ server
+HTTP  requests  to  the  NASA  Kennedy  Space  Center  WWW  server
 
-1. Number of unique hosts : 137978
-2. Total of 404 errors: 20901
-3. Top 5 URLs with 404 errors:
+1. Número de hosts únicos: 137978
+2. Total de erros 404: 20901
+3. Os 5 URLs que mais causaram erro 404:
      ts8-1.westwood.ts.ucla.edu/images/Nasa-logo.gif
      nexus.mlckew.edu.au/images/nasa-logo.gif
      203.13.168.17/images/nasa-logo.gif
      203.13.168.24/images/nasa-logo.gif
      onramp2-9.onr.com/images/nasa-logo.gif
 
-4. 404 errors by day:
-     Mean and Std.: 360.36 +- 113.93
+4. Quantidade de erros 404 por dia:
+     Média e desvio padrão: 360.36 +- 113.93
 
-     Total of 404 errors by day:
+     Total de erros 404 por dia:
           01/Jul/1995: 316     02/Jul/1995: 291     03/Jul/1995: 474     04/Jul/1995: 359     05/Jul/1995: 497
           06/Jul/1995: 640     07/Jul/1995: 570     08/Jul/1995: 302     09/Jul/1995: 348     10/Jul/1995: 398
           11/Jul/1995: 471     12/Jul/1995: 471     13/Jul/1995: 532     14/Jul/1995: 413     15/Jul/1995: 254
@@ -40,4 +55,4 @@ HTTP​ ​ requests​ ​ to​ ​ the​ ​ NASA​ ​ Kennedy​ ​ Spac
           24/Aug/1995: 420     25/Aug/1995: 415     26/Aug/1995: 366     27/Aug/1995: 370     28/Aug/1995: 410
           29/Aug/1995: 420     30/Aug/1995: 571     31/Aug/1995: 526
 
-5. Total of bytes returned: 61.02 GB
+5. Total de bytes retornados: 61.02 GB
