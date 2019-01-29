@@ -1,2 +1,2 @@
-# spark_stx
-Spark Exercises
+# Nasa Spark
+Extract statistics from NASA dataset using Spark
